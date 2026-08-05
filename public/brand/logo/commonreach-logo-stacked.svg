@@ -1,0 +1,7 @@
+<svg width="200" height="104" viewBox="0 0 200 104" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="CommonReach" style="color:#1C3A2E">
+  <g transform="translate(76 6)">
+    <path d="M24 43 C 20.5 35 13.5 29.2 11.6 23.7 A 13 13 0 1 1 36.4 23.7 C 34.5 29.2 27.5 35 24 43 Z" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"></path>
+    <circle cx="24" cy="19" r="5.4" fill="#A8C5A0"></circle>
+  </g>
+  <text x="100" y="88" text-anchor="middle" font-family="&#39;DM Sans&#39;, system-ui, sans-serif" font-size="29" letter-spacing="-0.5" fill="currentColor"><tspan font-weight="300">Common</tspan><tspan font-weight="700" letter-spacing="-0.9">Reach</tspan></text>
+</svg>

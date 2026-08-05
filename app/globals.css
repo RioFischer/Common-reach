@@ -1,0 +1,394 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Google Fonts — CommonReach brand typefaces */
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap');
+
+:root {
+  /*
+    ── Fixed spacing system ──────────────────────────────────────────────────
+    These are NOT configurable per client — they are the CSI design foundation.
+  */
+  --space-xs:  0.25rem;   /* 4px  */
+  --space-s:   0.5rem;    /* 8px  */
+  --space-m:   1rem;      /* 16px */
+  --space-l:   1.5rem;    /* 24px */
+  --space-xl:  2rem;      /* 32px */
+  --space-2xl: 3rem;      /* 48px */
+  --space-3xl: 4rem;      /* 64px */
+
+  /*
+    ── Design system colour tokens (direct hex) ────────────────────────────
+    Components reference these via Tailwind color classes (bg-primary etc.)
+    mapped in tailwind.config.ts via var(--color-*).
+  */
+
+  /* ── Colour tokens ──────────────────────────────────────────────────────── */
+  --color-primary:              #1C3A2E;
+  --color-primary-hover:        #265041;
+  --color-primary-foreground:   #ffffff;
+  --color-accent:               #A8C5A0;
+  --color-accent-foreground:    #24211C;
+  --color-surface:              #FFFFFF;
+  --color-background:           #F7F5F0;
+  --color-on-surface:           #24211C;
+  --color-on-background:        #4A453C;
+  --color-error:                #B23B3B;
+  --color-error-light:          #F9E5E5;
+  --color-success:              #2E7D55;
+  --color-success-light:        #E4F0EA;
+  --color-warning:              #B5731B;
+  --color-warning-light:        #FEF3C7;
+  --color-border:               #E2DCD0;
+  --color-disabled:             #A8A093;
+  --color-focus:                #356A57;
+
+  /* ── Backward-compat aliases ────────────────────────────────────────────── */
+  --color-foreground:           var(--color-on-surface);
+  --color-input:                var(--color-border);
+  --color-ring:                 var(--color-focus);
+  --color-secondary:            #F1F3F5;
+  --color-secondary-foreground: #212529;
+  --color-muted:                #F1F3F5;
+  --color-muted-foreground:     #6C757D;
+
+  /* ── Typography tokens ──────────────────────────────────────────────────── */
+  --font-family-h1:    "DM Serif Display", Georgia, serif;
+  --font-weight-h1:    400;
+  --font-size-h1:      2rem;
+  --line-height-h1:    1.15;
+  --letter-spacing-h1: 0em;
+
+  --font-family-h2:    "DM Serif Display", Georgia, serif;
+  --font-weight-h2:    400;
+  --font-size-h2:      1.5rem;
+  --line-height-h2:    1.25;
+  --letter-spacing-h2: 0em;
+
+  --font-family-h3:    "DM Sans", system-ui, sans-serif;
+  --font-weight-h3:    600;
+  --font-size-h3:      1.25rem;
+  --line-height-h3:    1.35;
+  --letter-spacing-h3: 0em;
+
+  --font-family-body:    "DM Sans", system-ui, sans-serif;
+  --font-weight-body:    400;
+  --font-size-body:      1rem;
+  --line-height-body:    1.6;
+  --letter-spacing-body: 0em;
+
+  --font-family-small:    "DM Sans", system-ui, sans-serif;
+  --font-weight-small:    400;
+  --font-size-small:      0.875rem;
+  --line-height-small:    1.5;
+  --letter-spacing-small: 0em;
+
+  --font-family-label:    "DM Sans", system-ui, sans-serif;
+  --font-weight-label:    500;
+  --font-size-label:      0.875rem;
+  --line-height-label:    1.4;
+  --letter-spacing-label: 0em;
+
+  /* ── Backward-compat font alias ─────────────────────────────────────────── */
+  --font-sans: var(--font-family-body);
+
+  /* ── Corner radius tokens ───────────────────────────────────────────────── */
+  --radius-sm:   0.25rem;
+  --radius-md:   0.5rem;
+  --radius-lg:   1rem;
+  --radius-full: 9999px;
+
+  /* ── Backward-compat radius alias ──────────────────────────────────────── */
+  --radius: var(--radius-md);
+
+  /* ─────────────────────────────────────────────────────────────────────────
+     MUNICIPAL DESIGN SYSTEM TOKENS
+     ───────────────────────────────────────────────────────────────────────── */
+
+  /* === Shadcn-compatible tokens ========================================= */
+  --font-size: 16px;
+  --background: #F7F5F0;
+  --foreground: #24211C;
+  --card: #FFFFFF;
+  --card-foreground: #24211C;
+  --popover: #FFFFFF;
+  --popover-foreground: #24211C;
+  --primary: #1C3A2E;
+  --primary-foreground: #ffffff;
+  --secondary: #E2DCD0;
+  --secondary-foreground: #24211C;
+  --muted: #EFEBE2;
+  --muted-foreground: #4A453C;
+  --accent: #A8C5A0;
+  --accent-foreground: #24211C;
+  --destructive: #B23B3B;
+  --destructive-foreground: #ffffff;
+  --border: #E2DCD0;
+  --input: transparent;
+  --input-background: #EFEBE2;
+  --switch-background: #A8A093;
+  --font-weight-medium: 500;
+  --font-weight-normal: 400;
+  --ring: #356A57;
+  --sidebar: #F7F5F0;
+  --sidebar-foreground: #24211C;
+  --sidebar-primary: #1C3A2E;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #D1E5D6;
+  --sidebar-accent-foreground: #24211C;
+  --sidebar-border: #E2DCD0;
+  --sidebar-ring: #356A57;
+
+  /* === BRAND PALETTE: CommonReach Forest ================================ */
+  --ds-brand-50:  #EEF3F0;
+  --ds-brand-100: #D1E5D6;
+  --ds-brand-200: #A8C5A0;
+  --ds-brand-300: #8AAE81;
+  --ds-brand-400: #6A9878;
+  --ds-brand-500: #4A8470;
+  --ds-brand-600: #356A57;
+  --ds-brand-700: #265041;
+  --ds-brand-800: #1C3A2E;
+  --ds-brand-900: #14291F;
+
+  /* === NEUTRAL PALETTE: CommonReach warm stone/linen ==================== */
+  --ds-neutral-0:   #FFFFFF;
+  --ds-neutral-50:  #F7F5F0;
+  --ds-neutral-100: #EFEBE2;
+  --ds-neutral-200: #E2DCD0;
+  --ds-neutral-300: #CFC7B7;
+  --ds-neutral-400: #A8A093;
+  --ds-neutral-500: #786F61;
+  --ds-neutral-600: #4A453C;
+  --ds-neutral-700: #4A453C;
+  --ds-neutral-800: #24211C;
+  --ds-neutral-900: #24211C;
+
+  /* === SEMANTIC COLORS ================================================== */
+  --ds-success-light:  #E6F4EE;
+  --ds-success-base:   #1A7F5E;
+  --ds-success-dark:   #155F47;
+
+  --ds-warning-light:  #FEF3C7;
+  --ds-warning-base:   #B45309;
+  --ds-warning-dark:   #92400E;
+
+  --ds-error-light:    #FEE2E2;
+  --ds-error-base:     #B91C1C;
+  --ds-error-dark:     #991B1B;
+
+  --ds-info-light:     var(--ds-brand-50);
+  --ds-info-base:      var(--ds-brand-600);
+  --ds-info-dark:      var(--ds-brand-700);
+
+  /* === TYPOGRAPHY ======================================================= */
+  --ds-font-sans: 'DM Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --ds-font-mono: 'JetBrains Mono', 'Fira Code', Consolas, 'Courier New', monospace;
+
+  --ds-text-2xs:  0.625rem;
+  --ds-text-xs:   0.75rem;
+  --ds-text-sm:   0.875rem;
+  --ds-text-base: 1rem;
+  --ds-text-md:   1.125rem;
+  --ds-text-lg:   1.25rem;
+  --ds-text-xl:   1.5rem;
+  --ds-text-2xl:  1.875rem;
+  --ds-text-3xl:  2.25rem;
+  --ds-text-4xl:  3rem;
+
+  --ds-weight-regular:  400;
+  --ds-weight-medium:   500;
+  --ds-weight-semibold: 600;
+  --ds-weight-bold:     700;
+
+  --ds-leading-tight:   1.2;
+  --ds-leading-snug:    1.375;
+  --ds-leading-normal:  1.5;
+  --ds-leading-relaxed: 1.625;
+  --ds-leading-loose:   2;
+
+  --ds-tracking-tight:  -0.02em;
+  --ds-tracking-normal:  0em;
+  --ds-tracking-wide:    0.025em;
+  --ds-tracking-wider:   0.05em;
+
+  /* === SPACING ========================================================== */
+  --ds-space-0:    0px;
+  --ds-space-0-5:  2px;
+  --ds-space-1:    4px;
+  --ds-space-2:    8px;
+  --ds-space-3:    12px;
+  --ds-space-4:    16px;
+  --ds-space-5:    20px;
+  --ds-space-6:    24px;
+  --ds-space-8:    32px;
+  --ds-space-10:   40px;
+  --ds-space-12:   48px;
+  --ds-space-16:   64px;
+  --ds-space-20:   80px;
+  --ds-space-24:   96px;
+
+  /* === CORNER RADIUS ==================================================== */
+  --ds-radius-none: 0px;
+  --ds-radius-sm:   2px;
+  --ds-radius-base: 4px;
+  --ds-radius-md:   6px;
+  --ds-radius-lg:   8px;
+  --ds-radius-xl:   12px;
+  --ds-radius-2xl:  16px;
+  --ds-radius-3xl:  24px;
+  --ds-radius-full: 9999px;
+
+  /* === CONTAINER BREAKPOINTS ============================================ */
+  --ds-bp-xs:  320px;
+  --ds-bp-sm:  480px;
+  --ds-bp-md:  640px;
+  --ds-bp-lg:  768px;
+  --ds-bp-xl:  1024px;
+  --ds-bp-2xl: 1280px;
+
+  /* === SHADOWS ========================================================== */
+  --ds-shadow-sm:   0 1px 2px 0 rgba(0,0,0,0.05);
+  --ds-shadow-base: 0 1px 3px 0 rgba(0,0,0,0.10), 0 1px 2px -1px rgba(0,0,0,0.10);
+  --ds-shadow-md:   0 4px 6px -1px rgba(0,0,0,0.10), 0 2px 4px -2px rgba(0,0,0,0.10);
+  --ds-shadow-lg:   0 10px 15px -3px rgba(0,0,0,0.10), 0 4px 6px -4px rgba(0,0,0,0.10);
+
+  /* === FUNCTIONAL COLORS ================================================ */
+  --ds-bg-default:       var(--ds-neutral-0);
+  --ds-bg-subtle:        var(--ds-neutral-50);
+  --ds-bg-muted:         var(--ds-neutral-100);
+  --ds-bg-brand-subtle:  var(--ds-brand-50);
+
+  --ds-text-primary:     var(--ds-neutral-900);
+  --ds-text-secondary:   var(--ds-neutral-700);
+  --ds-text-tertiary:    var(--ds-neutral-600);
+  --ds-text-placeholder: var(--ds-neutral-500);
+  --ds-text-disabled:    var(--ds-neutral-400);
+  --ds-text-inverse:     var(--ds-neutral-0);
+  --ds-text-brand:       var(--ds-brand-600);
+  --ds-text-link:        var(--ds-brand-600);
+  --ds-text-success:     var(--ds-success-base);
+  --ds-text-warning:     var(--ds-warning-base);
+  --ds-text-error:       var(--ds-error-base);
+
+  --ds-border-subtle:   var(--ds-neutral-100);
+  --ds-border-default:  var(--ds-neutral-200);
+  --ds-border-strong:   var(--ds-neutral-300);
+  --ds-border-focus:    var(--ds-brand-600);
+  --ds-border-brand:    var(--ds-brand-600);
+  --ds-border-success:  var(--ds-success-base);
+  --ds-border-error:    var(--ds-error-base);
+
+  --ds-action-primary-bg:         var(--ds-brand-600);
+  --ds-action-primary-bg-hover:   var(--ds-brand-700);
+  --ds-action-primary-bg-active:  var(--ds-brand-800);
+  --ds-action-primary-fg:         var(--ds-neutral-0);
+
+  --ds-action-secondary-bg:        var(--ds-neutral-100);
+  --ds-action-secondary-bg-hover:  var(--ds-neutral-200);
+  --ds-action-secondary-bg-active: var(--ds-neutral-300);
+  --ds-action-secondary-fg:        var(--ds-neutral-900);
+
+  --ds-action-ghost-bg-hover:  var(--ds-neutral-50);
+  --ds-action-ghost-fg:        var(--ds-neutral-700);
+
+  --ds-action-danger-bg:       var(--ds-error-base);
+  --ds-action-danger-bg-hover: var(--ds-error-dark);
+  --ds-action-danger-fg:       var(--ds-neutral-0);
+
+  --ds-action-disabled-bg:  var(--ds-neutral-200);
+  --ds-action-disabled-fg:  var(--ds-neutral-500);
+
+  /* === TRANSITIONS ====================================================== */
+  --ds-transition-fast:   120ms ease;
+  --ds-transition-normal: 200ms ease;
+  --ds-transition-slow:   300ms ease;
+
+  /* === CARD SHADOW ======================================================= */
+  --ds-shadow-card: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.04);
+  --ds-shadow-card-hover: 0 4px 8px rgba(0,0,0,0.10), 0 2px 4px rgba(0,0,0,0.06);
+
+  /* === FONT FEATURES ===================================================== */
+  /* Tabular numbers for data contexts (phone, distance, counts) */
+  --ds-font-feature-tnum: "tnum" 1;
+}
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    font-size: var(--font-size);
+  }
+
+  body {
+    font-family: var(--ds-font-sans);
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+  }
+
+  h1 {
+    font-family: var(--font-family-h1);
+    font-size: var(--ds-text-2xl);
+    font-weight: var(--font-weight-h1);
+    line-height: var(--ds-leading-tight);
+    color: var(--ds-neutral-900);
+  }
+
+  h2 {
+    font-family: var(--font-family-h2);
+    font-size: var(--ds-text-xl);
+    font-weight: var(--font-weight-h2);
+    line-height: var(--ds-leading-snug);
+    color: var(--ds-neutral-900);
+  }
+
+  h3 {
+    font-family: var(--font-family-h3);
+    font-size: var(--ds-text-lg);
+    font-weight: var(--font-weight-h3);
+    line-height: var(--ds-leading-normal);
+    color: var(--ds-neutral-900);
+  }
+
+  h4 {
+    font-size: var(--ds-text-base);
+    font-weight: var(--ds-weight-medium);
+    line-height: var(--ds-leading-normal);
+    color: var(--ds-neutral-900);
+  }
+
+  label {
+    font-size: var(--ds-text-sm);
+    font-weight: var(--ds-weight-medium);
+    line-height: var(--ds-leading-normal);
+  }
+
+  button {
+    font-size: var(--ds-text-sm);
+    font-weight: var(--ds-weight-medium);
+    line-height: var(--ds-leading-normal);
+    font-family: var(--ds-font-sans);
+  }
+
+  input,
+  select,
+  textarea {
+    font-size: var(--ds-text-sm);
+    font-weight: var(--ds-weight-regular);
+    line-height: var(--ds-leading-normal);
+    font-family: var(--ds-font-sans);
+  }
+}
+
+/* ── Skip navigation link — WCAG 2.4.1 ─────────────────────────────────────── */
+.skip-nav:focus {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  z-index: 9999;
+}
