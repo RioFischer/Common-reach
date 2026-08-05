@@ -14,22 +14,30 @@
 # /Codman-Demo -> the Codman Square Anti-Displacement Initiative directory.
 # status = 200 makes this a rewrite (proxy), so the URL bar keeps showing
 # /Codman-Demo rather than jumping to /codman-square/search.
+# force = true is required here: the Next.js plugin's own edge function
+# handles every path, so Netlify treats paths as "already matched" by the
+# framework and silently skips custom redirects unless forced to take
+# priority over it.
 [[redirects]]
   from = "/Codman-Demo"
   to = "/codman-square/search"
   status = 200
+  force = true
 
 [[redirects]]
   from = "/Codman-Demo/*"
   to = "/codman-square/search"
   status = 200
+  force = true
 
 [[redirects]]
   from = "/codman-demo"
   to = "/codman-square/search"
   status = 200
+  force = true
 
 [[redirects]]
   from = "/codman-demo/*"
   to = "/codman-square/search"
   status = 200
+  force = true
