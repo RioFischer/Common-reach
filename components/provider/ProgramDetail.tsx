@@ -60,7 +60,7 @@ function Tag({ children, variant = 'neutral' }: { children: React.ReactNode; var
 export function ProgramDetail({ program, clientId, slug }: ProgramDetailProps) {
   const [showMapLinks, setShowMapLinks] = useState(false)
   const backHref = slug ? `/${slug}/search` : `/search?client_id=${clientId}`
-  const providerHref = slug ? `/provider/${program.provider_id}?slug=${slug}` : `/provider/${program.provider_id}?client_id=${clientId}`
+  const providerHref = slug ? `/provider/${program.provider_id}/programs?slug=${slug}` : `/provider/${program.provider_id}/programs?client_id=${clientId}`
 
   return (
     <article aria-label={program.name} style={{ maxWidth: '672px', margin: '0 auto', display: 'flex', flexDirection: 'column', gap: 'var(--ds-space-6)' }}>
@@ -92,7 +92,17 @@ export function ProgramDetail({ program, clientId, slug }: ProgramDetailProps) {
         </h1>
         <p style={{ margin: '4px 0 0', fontSize: 'var(--ds-text-sm)', color: 'var(--ds-text-tertiary)', fontFamily: 'var(--ds-font-sans)' }}>
           A program of{' '}
-          <Link href={providerHref} style={{ color: 'var(--ds-brand-600)', textDecoration: 'none' }}>
+          <Link
+            href={providerHref}
+            style={{
+              color: 'var(--ds-brand-600)',
+              fontWeight: 'var(--ds-weight-semibold)',
+              textDecoration: 'underline',
+              textUnderlineOffset: '2px',
+            }}
+            onMouseOver={e => (e.currentTarget.style.color = 'var(--ds-brand-700)')}
+            onMouseOut={e => (e.currentTarget.style.color = 'var(--ds-brand-600)')}
+          >
             {program.provider_name}
           </Link>
         </p>

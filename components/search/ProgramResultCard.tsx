@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import Link from 'next/link'
 import { ContactForm } from '@/components/provider/ContactForm'
 import { TrustBadges } from '@/components/TrustBadges'
 import type { ProgramCard } from '@/lib/types'
@@ -46,6 +47,9 @@ export function ProgramResultCard({ program, clientId, slug, embedMode = false }
   const detailHref = program.is_provider_fallback
     ? (slug ? `/provider/${program.id}?slug=${slug}` : `/provider/${program.id}?client_id=${clientId}`)
     : (slug ? `/program/${program.id}?slug=${slug}` : `/program/${program.id}?client_id=${clientId}`)
+  const providerProgramsHref = slug
+    ? `/provider/${program.provider_id}/programs?slug=${slug}`
+    : `/provider/${program.provider_id}/programs?client_id=${clientId}`
 
   // Programs don't carry domain data (the domain/category/subcategory
   // hierarchy is deprecated) — always use the default accent color.
@@ -124,10 +128,23 @@ export function ProgramResultCard({ program, clientId, slug, embedMode = false }
             </div>
           )}
 
-          {/* ── "via {Provider}" subtitle ── */}
+          {/* ── "via {Provider}" subtitle — links to the provider's full programs list ── */}
           {!program.is_provider_fallback && (
             <div className="mb-2" style={{ fontSize: 'var(--ds-text-xs)', color: 'var(--ds-text-tertiary)' }}>
-              via {program.provider_name}
+              via{' '}
+              <Link
+                href={providerProgramsHref}
+                style={{
+                  color: 'var(--ds-brand-600)',
+                  fontWeight: 'var(--ds-weight-semibold)',
+                  textDecoration: 'underline',
+                  textUnderlineOffset: '2px',
+                }}
+                onMouseEnter={e => (e.currentTarget.style.color = 'var(--ds-brand-700)')}
+                onMouseLeave={e => (e.currentTarget.style.color = 'var(--ds-brand-600)')}
+              >
+                {program.provider_name}
+              </Link>
             </div>
           )}
 
