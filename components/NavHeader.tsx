@@ -2,14 +2,13 @@ import Link from 'next/link'
 
 interface NavHeaderProps {
   cityName: string
-  clientId: string
   slug?: string
   /** Client's own logo — when set, replaces the plain-text city name. */
   logoUrl?: string | null
 }
 
-export function NavHeader({ cityName, clientId, slug, logoUrl }: NavHeaderProps) {
-  const href = slug ? `/${slug}/search` : `/search?client_id=${clientId}`
+export function NavHeader({ cityName, slug, logoUrl }: NavHeaderProps) {
+  const href = slug ? `/${slug}` : '/'
 
   return (
     <header style={{

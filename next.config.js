@@ -1,11 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  async rewrites() {
+  async redirects() {
     return [
-      { source: '/Codman-Demo', destination: '/codman-square/search' },
-      { source: '/Codman-Demo/:path*', destination: '/codman-square/search' },
-      { source: '/codman-demo', destination: '/codman-square/search' },
-      { source: '/codman-demo/:path*', destination: '/codman-square/search' },
+      { source: '/Codman-Demo', destination: '/codman-square', permanent: true },
+      { source: '/Codman-Demo/:path*', destination: '/codman-square', permanent: true },
+      { source: '/codman-demo', destination: '/codman-square', permanent: true },
+      { source: '/codman-demo/:path*', destination: '/codman-square', permanent: true },
     ]
   },
 }

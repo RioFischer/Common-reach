@@ -1,9 +1,24 @@
-import { redirect } from 'next/navigation'
+import Link from 'next/link'
 
-/**
- * Root route — redirect to /search.
- * city_id must be provided by the consumer (white-label embed or direct navigation).
- */
 export default function HomePage() {
-  redirect('/acton-ma/search')
+  return (
+    <main
+      id="main-content"
+      style={{
+        minHeight: '100vh',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        textAlign: 'center',
+        padding: 'var(--ds-space-6)',
+      }}
+    >
+      <div>
+        <p>Landing page coming soon.</p>
+        <p>
+          <Link href="/demo">View the demo &rarr;</Link>
+        </p>
+      </div>
+    </main>
+  )
 }
