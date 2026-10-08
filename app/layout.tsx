@@ -28,6 +28,10 @@ const ORGANIZATION = {
     '@type': 'Organization',
     name: 'Upriver Design',
     url: 'https://www.upriver.design',
+    // Connects the graph: CommonReach -> Upriver -> a profile search engines
+    // already trust. Until CommonReach has profiles of its own, this is the
+    // strongest corroborating signal available.
+    sameAs: ['https://www.linkedin.com/company/upriver-design/'],
   },
   sameAs: [] as string[],
 }
